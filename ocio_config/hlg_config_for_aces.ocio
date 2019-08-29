@@ -1,0 +1,34 @@
+colorspaces:
+  - !<ColorSpace>
+    name: Utility - HLG - Rec.2020
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: HLG - Scene
+    isdata: false
+    allocation: uniform
+    allocationvars: [0, 1]
+    to_reference: !<GroupTransform>
+      children:
+        - !<FileTransform> {src: hlg_to_linear.cube, interpolation: linear}
+        # Exposure of 1.903:
+        - !<CDLTransform> {slope: [3.7399007910058217, 3.7399007910058217, 3.7399007910058217]}
+        # Rec2020 to AP0:
+        - !<MatrixTransform> {matrix: [0.67908563, 0.15770091, 0.16321345, 0, 0.04600200, 0.85905467, 0.09494332, 0, -0.00057394, 0.02846777, 0.97210617, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Utility - HLG - Rec.709
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: HLG - Scene
+    isdata: false
+    allocation: uniform
+    allocationvars: [0, 1]
+    to_reference: !<GroupTransform>
+      children:
+        - !<FileTransform> {src: hlg_to_linear.cube, interpolation: linear}
+        # Exposure of 1.903:
+        - !<CDLTransform> {slope: [3.7399007910058217, 3.7399007910058217, 3.7399007910058217]}
+        # Rec709 to AP0:
+        - !<MatrixTransform> {matrix: [0.43964687, 0.38298151, 0.17737158, 0, 0.08978026, 0.81343973, 0.09677973, 0, 0.01754464, 0.11155707, 0.87089837, 0, 0, 0, 0, 1]}
