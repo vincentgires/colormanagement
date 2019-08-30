@@ -3,3 +3,8 @@ looks:
     name: Luminance
     process_space: linear
     transform: !<MatrixTransform> {matrix: [0.2126, 0.7152, 0.0722, 0, 0.2126, 0.7152, 0.0722, 0, 0.2126, 0.7152, 0.0722, 0, 0, 0, 0, 1]}
+
+  - !<Look>
+    name: Desaturate
+    process_space: linear
+    transform: !<CDLTransform> {sat: 0.0}
