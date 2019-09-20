@@ -1,0 +1,12 @@
+Expression {
+ name ExpressionHlgToLinear
+ temp_name0 avar
+ temp_expr0 0.17883277
+ temp_name1 bvar
+ temp_expr1 0.28466892
+ temp_name2 cvar
+ temp_expr2 0.55991073
+ expr0 "r < 0.5 ? copysign((pow(r, 2.0) / 3.0), r) : (exp((r - cvar) / avar) + bvar) / 12.0"
+ expr1 "g < 0.5 ? copysign((pow(g, 2.0) / 3.0), g) : (exp((g - cvar) / avar) + bvar) / 12.0"
+ expr2 "b < 0.5 ? copysign((pow(b, 2.0) / 3.0), b) : (exp((b - cvar) / avar) + bvar) / 12.0"
+}
