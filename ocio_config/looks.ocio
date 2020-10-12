@@ -12,6 +12,6 @@ looks:
   - !<Look>
     name: Soften RRT
     process_space: acescg
-    transform: !<CDLTransform> {slope: [0.809, 0.809, 0.809], power: [0.89, 0.89, 0.89], sat: 1.13, direction: forward}
+    transform: !<CDLTransform> {slope: [0.809, 0.809, 0.809], power: [0.89, 0.89, 0.89], sat: 1.1, direction: forward}
     # Compensate the very contrasted look of the RRT to match other tonemap tools (such as darktable's filmic module or blender filmic view transform).
     # This equivalent to apply a contrast of 0.89 with a bit more saturation.
