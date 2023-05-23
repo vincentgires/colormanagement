@@ -1,17 +1,17 @@
 looks:
   - !<Look>
     name: Luminance
-    process_space: linear
+    process_space: scene_linear
     transform: !<MatrixTransform> {matrix: [0.2126, 0.7152, 0.0722, 0, 0.2126, 0.7152, 0.0722, 0, 0.2126, 0.7152, 0.0722, 0, 0, 0, 0, 1]}
 
   - !<Look>
     name: Desaturate
-    process_space: linear
+    process_space: scene_linear
     transform: !<CDLTransform> {sat: 0.0}
 
   - !<Look>
     name: Soften RRT
-    process_space: acescg
+    process_space: scene_linear
     transform: !<CDLTransform> {slope: [0.809, 0.809, 0.809], power: [0.89, 0.89, 0.89], sat: 1.1, direction: forward}
     # Compensate the very contrasted look of the RRT to match other tonemap tools (such as darktable's filmic module or blender filmic view transform).
     # This equivalent to apply a contrast of 0.89 with a bit more saturation.
