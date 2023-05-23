@@ -1,10 +1,11 @@
 colorspaces:
   - !<ColorSpace>
-    name: Utility - HLG - Rec.2020
+    name: HLG Rec.2020
+    aliases: [hlg_rec2020, Utility - HLG - Rec.2020]
     family: Utility
     equalitygroup: ""
     bitdepth: 32f
-    description: HLG - Scene
+    description: HLG Scene (Rec.2020)
     isdata: false
     allocation: uniform
     allocationvars: [0, 1]
@@ -17,11 +18,12 @@ colorspaces:
         - !<MatrixTransform> {matrix: [0.67908563, 0.15770091, 0.16321345, 0, 0.04600200, 0.85905467, 0.09494332, 0, -0.00057394, 0.02846777, 0.97210617, 0, 0, 0, 0, 1]}
 
   - !<ColorSpace>
-    name: Utility - HLG - Rec.709
+    name: HLG Rec.709
+    aliases: [hlg_rec709, Utility - HLG - Rec.709]
     family: Utility
     equalitygroup: ""
     bitdepth: 32f
-    description: HLG - Scene
+    description: HLG Scene (Rec.709)
     isdata: false
     allocation: uniform
     allocationvars: [0, 1]
@@ -34,33 +36,12 @@ colorspaces:
         - !<MatrixTransform> {matrix: [0.43964687, 0.38298151, 0.17737158, 0, 0.08978026, 0.81343973, 0.09677973, 0, 0.01754464, 0.11155707, 0.87089837, 0, 0, 0, 0, 1]}
 
   - !<ColorSpace>
-    name: hlg_rec2020
-    family: Utility/Aliases
-    equalitygroup: ""
-    bitdepth: 32f
-    description: HLG - Scene
-    isdata: false
-    allocation: uniform
-    allocationvars: [0, 1]
-    to_reference: !<ColorSpaceTransform> {src: Utility - HLG - Rec.2020, dst: ACES - ACES2065-1}
-
-  - !<ColorSpace>
-    name: hlg_rec709
-    family: Utility/Aliases
-    equalitygroup: ""
-    bitdepth: 32f
-    description: HLG - Scene
-    isdata: false
-    allocation: uniform
-    allocationvars: [0, 1]
-    to_reference: !<ColorSpaceTransform> {src: Utility - HLG - Rec.709, dst: ACES - ACES2065-1}
-
-  - !<ColorSpace>
-    name: Input - Sony - S-Log2 - Rec.709
+    name: S-Log2 Rec.709
+    aliases: [slog2_rec709, Input - Sony - S-Log2 - Rec.709]
     family: Input/Sony
     equalitygroup: ""
     bitdepth: 32f
-    description: S-Log2 - Rec.709
+    description: S-Log2 Rec.709 to ACES2065-1
     isdata: false
     allocation: uniform
     allocationvars: [0, 1]
@@ -71,38 +52,18 @@ colorspaces:
         - !<MatrixTransform> {matrix: [0.43964687, 0.38298151, 0.17737158, 0, 0.08978026, 0.81343973, 0.09677973, 0, 0.01754464, 0.11155707, 0.87089837, 0, 0, 0, 0, 1]}
 
   - !<ColorSpace>
-    name: Input - Sony - S-Log3 - Rec.709
+    name: S-Log3 Rec.709
+    aliases: [slog3_rec709, Input - Sony - S-Log3 - Rec.709]
     family: Input/Sony
     equalitygroup: ""
     bitdepth: 32f
-    description: S-Log3 - Rec.709
+    description: S-Log3 Rec.709 to to ACES2065-1
     isdata: false
     allocation: uniform
     allocationvars: [0, 1]
     to_reference: !<GroupTransform>
       children:
-        - !<FileTransform> {src: S-Log3_to_linear.spi1d, interpolation: linear}
+        # S-Log3 to linear
+        - !<LogCameraTransform> {base: 10, log_side_slope: 0.255620723362659, log_side_offset: 0.410557184750733, lin_side_slope: 5.26315789473684, lin_side_offset: 0.0526315789473684, lin_side_break: 0.01125, linear_slope: 6.62194371177582, direction: inverse}
         # Rec709 to AP0:
         - !<MatrixTransform> {matrix: [0.43964687, 0.38298151, 0.17737158, 0, 0.08978026, 0.81343973, 0.09677973, 0, 0.01754464, 0.11155707, 0.87089837, 0, 0, 0, 0, 1]}
-
-  - !<ColorSpace>
-    name: slog2_rec709
-    family: Utility/Aliases
-    equalitygroup: ""
-    bitdepth: 32f
-    description: S-Log2 - Rec.709
-    isdata: false
-    allocation: uniform
-    allocationvars: [0, 1]
-    to_reference: !<ColorSpaceTransform> {src: Input - Sony - S-Log2 - Rec.709, dst: ACES - ACES2065-1}
-
-  - !<ColorSpace>
-    name: slog3_rec709
-    family: Utility/Aliases
-    equalitygroup: ""
-    bitdepth: 32f
-    description: S-Log3 - Rec.709
-    isdata: false
-    allocation: uniform
-    allocationvars: [0, 1]
-    to_reference: !<ColorSpaceTransform> {src: Input - Sony - S-Log3 - Rec.709, dst: ACES - ACES2065-1}

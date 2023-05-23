@@ -4,7 +4,7 @@ colorspaces:
     family: hlg
     equalitygroup: ""
     bitdepth: 32f
-    description: HLG Scene
+    description: HLG Scene (Rec2020)
     isdata: false
     allocation: uniform
     allocationvars: [0, 1]
@@ -21,7 +21,7 @@ colorspaces:
     family: hlg
     equalitygroup: ""
     bitdepth: 32f
-    description: HLG Scene
+    description: HLG Scene (Rec709)
     isdata: false
     allocation: uniform
     allocationvars: [0, 1]
