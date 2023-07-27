@@ -67,3 +67,21 @@ colorspaces:
         - !<LogCameraTransform> {base: 10, log_side_slope: 0.255620723362659, log_side_offset: 0.410557184750733, lin_side_slope: 5.26315789473684, lin_side_offset: 0.0526315789473684, lin_side_break: 0.01125, linear_slope: 6.62194371177582, direction: inverse}
         # Rec709 to AP0:
         - !<MatrixTransform> {matrix: [0.43964687, 0.38298151, 0.17737158, 0, 0.08978026, 0.81343973, 0.09677973, 0, 0.01754464, 0.11155707, 0.87089837, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Protune Flat Rec.709
+    aliases: [protuneflat_rec709, Input - GoPro - Protune Flat - Rec.709]
+    family: Input/GoPro
+    equalitygroup: ""
+    bitdepth: 32f
+    description: Protune Flat Rec.709 to ACES2065-1
+    isdata: false
+    allocation: uniform
+    allocationvars: [0, 1]
+    to_reference: !<GroupTransform>
+      children:
+        - !<FileTransform> {src: Protune_Flat_to_linear.spi1d, interpolation: linear}
+        # Exposure of 1.903:
+        - !<CDLTransform> {slope: [3.7399007910058217, 3.7399007910058217, 3.7399007910058217]}
+        # Rec709 to AP0:
+        - !<MatrixTransform> {matrix: [0.43964687, 0.38298151, 0.17737158, 0, 0.08978026, 0.81343973, 0.09677973, 0, 0.01754464, 0.11155707, 0.87089837, 0, 0, 0, 0, 1]}
