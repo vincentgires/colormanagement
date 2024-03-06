@@ -11,7 +11,10 @@ looks:
 
   - !<Look>
     name: Soften RRT
-    process_space: scene_linear
-    transform: !<CDLTransform> {slope: [0.809, 0.809, 0.809], power: [0.89, 0.89, 0.89], sat: 1.1, direction: forward}
+    process_space: ACES2065-1
+    transform: !<GroupTransform>
+      children:
+        - !<CDLTransform> {slope: [0.809, 0.809, 0.809], power: [0.89, 0.89, 0.89], sat: 1.1, direction: forward}
+        - !<BuiltinTransform> {style: ACES-LMT - ACES 1.3 Reference Gamut Compression}
     # Compensate the very contrasted look of the RRT to match other tonemap tools (such as darktable's filmic module or blender filmic view transform).
     # This equivalent to apply a contrast of 0.89 with a bit more saturation.
